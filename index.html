@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>🎬 BoxOfficePredictor+</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Starfield -->
+  <div class="starfield" id="starfield"></div>
+  
+  <!-- Cinema Light Rays -->
+  <div class="light-rays">
+    <div class="light-ray"></div>
+    <div class="light-ray"></div>
+    <div class="light-ray"></div>
+  </div>
+  
+  <!-- Sparkles Container -->
+  <div id="sparkles"></div>
+  
+  <!-- Cinema Vignette -->
+  <div class="vignette"></div>
+
+  <div class="container">
+    <h1>🎬 BoxOfficePredictor+</h1>
+    <form id="predictionForm">
+      <div class="form-group">
+        <div class="input-wrapper">
+          <input type="number" name="budget" placeholder=" " required>
+          <div class="input-label">Budget (USD)</div>
+        </div>
+      </div>
+      
+      <div class="form-group">
+        <div class="input-wrapper">
+          <input type="number" name="runtime" placeholder=" " required>
+          <div class="input-label">Runtime (minutes)</div>
+        </div>
+      </div>
+      
+      <div class="form-group">
+        <div class="input-wrapper">
+          <input type="number" name="popularity" placeholder=" " required>
+          <div class="input-label">Popularity Score</div>
+        </div>
+      </div>
+      
+      <div class="form-group">
+        <div class="input-wrapper">
+          <input type="number" step="0.1" name="vote_average" placeholder=" " required>
+          <div class="input-label">Vote Average</div>
+        </div>
+      </div>
+      
+      <div class="form-group">
+        <div class="input-wrapper">
+          <input type="number" name="vote_count" placeholder=" " required>
+          <div class="input-label">Vote Count</div>
+        </div>
+      </div>
+      
+      <button type="submit" class="predict-btn">
+        <span class="btn-text">Analyze Movie</span>
+      </button>
+    </form>
+    <div id="result"></div>
+  </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
