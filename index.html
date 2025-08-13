@@ -3,70 +3,645 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>🎬 BoxOfficePredictor+</title>
-  <link rel="stylesheet" href="style.css">
+  <link rel="icon" href="./favicon.ico" sizes="any">
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#ffffff">
+
+  <title>🎬 BoxOfficePredictor+ | Authentication</title>
+  <style>
+    /* Global Styles */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background: linear-gradient(135deg, #0f0f1a 0%, #1a1a2e 50%, #16213e 100%);
+      min-height: 100vh;
+      color: #fff;
+      overflow-x: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* Particles Background */
+    .particles {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: -1;
+    }
+
+    .particle {
+      position: absolute;
+      width: 2px;
+      height: 2px;
+      background: rgba(245, 197, 24, 0.3);
+      border-radius: 50%;
+      animation: particleFloat 20s linear infinite;
+    }
+
+    @keyframes particleFloat {
+      0% {
+        transform: translateY(100vh) rotate(0deg);
+        opacity: 0;
+      }
+      10% {
+        opacity: 1;
+      }
+      90% {
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(-100px) rotate(360deg);
+        opacity: 0;
+      }
+    }
+
+    /* Auth Container */
+    .auth-container {
+      background: rgba(255, 255, 255, 0.05);
+      backdrop-filter: blur(20px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 20px;
+      padding: 3rem;
+      width: 100%;
+      max-width: 450px;
+      position: relative;
+      overflow: hidden;
+      animation: float 6s ease-in-out infinite;
+    }
+
+    .auth-container::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, #f5c518, transparent);
+      animation: shimmer 3s infinite;
+    }
+
+    @keyframes shimmer {
+      0% { left: -100%; }
+      100% { left: 100%; }
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-10px); }
+    }
+
+    /* Logo */
+    .auth-logo {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+
+    .logo {
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: #f5c518;
+      text-shadow: 0 0 20px rgba(245, 197, 24, 0.5);
+      margin-bottom: 0.5rem;
+    }
+
+    .logo-subtitle {
+      color: rgba(255, 255, 255, 0.7);
+      font-size: 0.9rem;
+    }
+
+    /* Auth Toggle */
+    .auth-toggle {
+      display: flex;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 12px;
+      margin-bottom: 2rem;
+      overflow: hidden;
+    }
+
+    .toggle-btn {
+      flex: 1;
+      padding: 1rem;
+      background: transparent;
+      border: none;
+      color: rgba(255, 255, 255, 0.7);
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .toggle-btn.active {
+      background: #f5c518;
+      color: #000;
+    }
+
+    /* Form Styles */
+    .auth-form {
+      display: none;
+    }
+
+    .auth-form.active {
+      display: block;
+    }
+
+    .form-title {
+      font-size: 1.8rem;
+      font-weight: 700;
+      margin-bottom: 1.5rem;
+      text-align: center;
+      background: linear-gradient(135deg, #fff 0%, #f5c518 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .form-group {
+      margin-bottom: 1.5rem;
+    }
+
+    .form-input {
+      width: 100%;
+      padding: 1.2rem 1.5rem;
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 12px;
+      font-size: 1rem;
+      color: #fff;
+      transition: all 0.3s ease;
+      backdrop-filter: blur(10px);
+    }
+
+    .form-input:focus {
+      outline: none;
+      background: rgba(255, 255, 255, 0.12);
+      border-color: #f5c518;
+      box-shadow: 0 0 0 3px rgba(245, 197, 24, 0.1);
+      transform: translateY(-2px);
+    }
+
+    .form-input::placeholder {
+      color: rgba(255, 255, 255, 0.5);
+    }
+
+    .auth-button {
+      width: 100%;
+      padding: 1.5rem 2rem;
+      background: linear-gradient(135deg, #f5c518 0%, #e6b800 100%);
+      color: #000;
+      border: none;
+      border-radius: 12px;
+      font-size: 1.1rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      position: relative;
+      overflow: hidden;
+      margin-top: 1rem;
+    }
+
+    .auth-button:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 20px 40px rgba(245, 197, 24, 0.3);
+    }
+
+    .auth-button:disabled {
+      opacity: 0.7;
+      cursor: not-allowed;
+      transform: none;
+    }
+
+    .auth-button.loading::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 20px;
+      height: 20px;
+      margin: -10px 0 0 -10px;
+      border: 2px solid transparent;
+      border-top: 2px solid #000;
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+    }
+
+    @keyframes spin {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+
+    /* Alert Messages */
+    .alert {
+      padding: 1rem;
+      border-radius: 8px;
+      margin-bottom: 1rem;
+      font-weight: 600;
+      text-align: center;
+      opacity: 0;
+      transform: translateY(-10px);
+      transition: all 0.3s ease;
+    }
+
+    .alert.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .alert.success {
+      background: rgba(76, 175, 80, 0.2);
+      border: 1px solid rgba(76, 175, 80, 0.3);
+      color: #4caf50;
+    }
+
+    .alert.error {
+      background: rgba(244, 67, 54, 0.2);
+      border: 1px solid rgba(244, 67, 54, 0.3);
+      color: #f44336;
+    }
+
+    /* Footer Links */
+    .auth-footer {
+      text-align: center;
+      margin-top: 2rem;
+      padding-top: 2rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .footer-text {
+      color: rgba(255, 255, 255, 0.7);
+      font-size: 0.9rem;
+    }
+
+    .footer-link {
+      color: #f5c518;
+      text-decoration: none;
+      font-weight: 600;
+      transition: all 0.3s ease;
+    }
+
+    .footer-link:hover {
+      text-shadow: 0 0 10px rgba(245, 197, 24, 0.5);
+    }
+
+    /* Password Strength Indicator */
+    .password-strength {
+      margin-top: 0.5rem;
+      height: 4px;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 2px;
+      overflow: hidden;
+    }
+
+    .strength-bar {
+      height: 100%;
+      width: 0%;
+      transition: all 0.3s ease;
+      border-radius: 2px;
+    }
+
+    .strength-weak { background: #f44336; }
+    .strength-medium { background: #ff9800; }
+    .strength-strong { background: #4caf50; }
+
+    .strength-text {
+      font-size: 0.8rem;
+      margin-top: 0.5rem;
+      text-align: right;
+      color: rgba(255, 255, 255, 0.7);
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .auth-container {
+        margin: 1rem;
+        padding: 2rem;
+      }
+
+      .logo {
+        font-size: 2rem;
+      }
+    }
+  </style>
 </head>
 <body>
-  <!-- Starfield -->
-  <div class="starfield" id="starfield"></div>
-  
-  <!-- Cinema Light Rays -->
-  <div class="light-rays">
-    <div class="light-ray"></div>
-    <div class="light-ray"></div>
-    <div class="light-ray"></div>
-  </div>
-  
-  <!-- Sparkles Container -->
-  <div id="sparkles"></div> 
-  <!-- Cinema Vignette -->
-  <div class="vignette"></div> 
+  <!-- Particles Background -->
+  <div class="particles" id="particles"></div>
 
-  <div class="container">
-    <h1>🎬 BoxOfficePredictor+</h1>
-    <form id="predictionForm">
-      <div class="form-group">
-        <div class="input-wrapper">
-          <input type="number" name="budget" placeholder=" " required>
-          <div class="input-label">Budget (USD)</div>
-        </div>
-      </div>
+  <!-- Auth Container -->
+  <div class="auth-container">
+    <!-- Logo -->
+    <div class="auth-logo">
+      <div class="logo">🎬 BoxOfficePredictor+</div>
+      <div class="logo-subtitle">AI-Powered Movie Analytics</div>
+    </div>
+
+    <!-- Auth Toggle -->
+    <div class="auth-toggle">
+      <button class="toggle-btn active" onclick="showLogin()">Login</button>
+      <button class="toggle-btn" onclick="showSignup()">Sign Up</button>
+    </div>
+
+    <!-- Alert Message -->
+    <div class="alert" id="alertMessage"></div>
+
+    <!-- Login Form -->
+    <form class="auth-form active" id="loginForm">
+      <h2 class="form-title">Welcome Back</h2>
       
       <div class="form-group">
-        <div class="input-wrapper">
-          <input type="number" name="runtime" placeholder=" " required>
-          <div class="input-label">Runtime (minutes)</div>
-        </div>
+        <input type="email" class="form-input" placeholder="Email Address" required id="loginEmail">
       </div>
-      
+
       <div class="form-group">
-        <div class="input-wrapper">
-          <input type="number" name="popularity" placeholder=" " required>
-          <div class="input-label">Popularity Score</div>
-        </div>
+        <input type="password" class="form-input" placeholder="Password" required id="loginPassword">
       </div>
-      
-      <div class="form-group">
-        <div class="input-wrapper">
-          <input type="number" step="0.1" name="vote_average" placeholder=" " required>
-          <div class="input-label">Vote Average</div>
-        </div>
-      </div>
-      
-      <div class="form-group">
-        <div class="input-wrapper">
-          <input type="number" name="vote_count" placeholder=" " required>
-          <div class="input-label">Vote Count</div>
-        </div>
-      </div>
-      
-      <button type="submit" class="predict-btn">
-        <span class="btn-text">Analyze Movie</span>
+
+      <button type="submit" class="auth-button" id="loginBtn">
+        <span class="btn-text">Sign In</span>
       </button>
     </form>
-    <div id="result"></div>
+
+    <!-- Signup Form -->
+    <form class="auth-form" id="signupForm">
+      <h2 class="form-title">Create Account</h2>
+      
+      <div class="form-group">
+        <input type="text" class="form-input" placeholder="Full Name" required id="signupName">
+      </div>
+
+      <div class="form-group">
+        <input type="email" class="form-input" placeholder="Email Address" required id="signupEmail">
+      </div>
+
+      <div class="form-group">
+        <input type="password" class="form-input" placeholder="Password" required id="signupPassword" oninput="checkPasswordStrength()">
+        <div class="password-strength">
+          <div class="strength-bar" id="strengthBar"></div>
+        </div>
+        <div class="strength-text" id="strengthText"></div>
+      </div>
+
+      <div class="form-group">
+        <input type="password" class="form-input" placeholder="Confirm Password" required id="confirmPassword">
+      </div>
+
+      <button type="submit" class="auth-button" id="signupBtn">
+        <span class="btn-text">Create Account</span>
+      </button>
+    </form>
+
+    <!-- Footer -->
+    <div class="auth-footer">
+      <p class="footer-text">
+        By continuing, you agree to our 
+        <a href="./Terms_Of_Conditions.html" class="footer-link">Terms of Service</a> and 
+        <a href="./Privacy_Policy.html" class="footer-link">Privacy Policy</a>
+      </p>
+    </div>
   </div>
 
-    <script src="script.js"></script>
+  <script>
+    // Initialize particles
+    function createParticles() {
+      const particlesContainer = document.getElementById('particles');
+      const particleCount = 50;
+
+      for (let i = 0; i < particleCount; i++) {
+        const particle = document.createElement('div');
+        particle.className = 'particle';
+        particle.style.left = Math.random() * 100 + '%';
+        particle.style.animationDelay = Math.random() * 20 + 's';
+        particle.style.animationDuration = (Math.random() * 10 + 15) + 's';
+        particlesContainer.appendChild(particle);
+      }
+    }
+
+    // Toggle between login and signup
+    function showLogin() {
+      document.querySelectorAll('.toggle-btn').forEach(btn => btn.classList.remove('active'));
+      document.querySelectorAll('.auth-form').forEach(form => form.classList.remove('active'));
+      
+      event.target.classList.add('active');
+      document.getElementById('loginForm').classList.add('active');
+      hideAlert();
+    }
+
+    function showSignup() {
+      document.querySelectorAll('.toggle-btn').forEach(btn => btn.classList.remove('active'));
+      document.querySelectorAll('.auth-form').forEach(form => form.classList.remove('active'));
+      
+      event.target.classList.add('active');
+      document.getElementById('signupForm').classList.add('active');
+      hideAlert();
+    }
+
+    // Alert functions
+    function showAlert(message, type) {
+      const alert = document.getElementById('alertMessage');
+      alert.textContent = message;
+      alert.className = `alert ${type} show`;
+    }
+
+    function hideAlert() {
+      const alert = document.getElementById('alertMessage');
+      alert.classList.remove('show');
+    }
+
+    // Password strength checker
+    function checkPasswordStrength() {
+      const password = document.getElementById('signupPassword').value;
+      const strengthBar = document.getElementById('strengthBar');
+      const strengthText = document.getElementById('strengthText');
+      
+      let strength = 0;
+      let text = '';
+      let className = '';
+
+      if (password.length >= 8) strength++;
+      if (/[a-z]/.test(password)) strength++;
+      if (/[A-Z]/.test(password)) strength++;
+      if (/[0-9]/.test(password)) strength++;
+      if (/[^A-Za-z0-9]/.test(password)) strength++;
+
+      switch (strength) {
+        case 0:
+        case 1:
+        case 2:
+          text = 'Weak';
+          className = 'strength-weak';
+          strengthBar.style.width = '33%';
+          break;
+        case 3:
+        case 4:
+          text = 'Medium';
+          className = 'strength-medium';
+          strengthBar.style.width = '66%';
+          break;
+        case 5:
+          text = 'Strong';
+          className = 'strength-strong';
+          strengthBar.style.width = '100%';
+          break;
+      }
+
+      strengthBar.className = `strength-bar ${className}`;
+      strengthText.textContent = text;
+    }
+
+    // Form submissions
+    document.getElementById('loginForm').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      
+      const email = document.getElementById('loginEmail').value;
+      const password = document.getElementById('loginPassword').value;
+      const loginBtn = document.getElementById('loginBtn');
+
+      if (!email || !password) {
+        showAlert('Please fill in all fields', 'error');
+        return;
+      }
+
+      loginBtn.classList.add('loading');
+      loginBtn.disabled = true;
+
+      try {
+        const response = await fetch('https://boxofficepredictor-backend.onrender.com/api/auth/login', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          credentials: 'include',
+          body: JSON.stringify({ email, password }),
+        });
+
+        const data = await response.json();
+
+        if (response.ok) {
+          showAlert('Login successful! Redirecting...', 'success');
+          // Store authentication data in memory instead of localStorage
+          if (data.token) {
+            sessionStorage.setItem('token', data.token);
+          }
+          if (data.user) {
+            sessionStorage.setItem('user', JSON.stringify(data.user));
+          }
+          
+          setTimeout(() => {
+            window.location.href = './auth.html';
+          }, 1500);
+        } else {
+          // Handle different error cases based on your backend responses
+          if (response.status === 400) {
+            showAlert('Invalid email or password', 'error');
+          } else if (response.status === 401) {
+            showAlert('Invalid credentials', 'error');
+          } else if (response.status === 404) {
+            showAlert('User not found. Please sign up first.', 'error');
+          } else {
+            showAlert(data.message || 'Login failed. Please try again.', 'error');
+          }
+        }
+      } catch (error) {
+        console.error('Login error:', error);
+        showAlert('Network error. Please check your connection and try again.', 'error');
+      } finally {
+        loginBtn.classList.remove('loading');
+        loginBtn.disabled = false;
+      }
+    });
+
+    document.getElementById('signupForm').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      
+      const name = document.getElementById('signupName').value;
+      const email = document.getElementById('signupEmail').value;
+      const password = document.getElementById('signupPassword').value;
+      const confirmPassword = document.getElementById('confirmPassword').value;
+      const signupBtn = document.getElementById('signupBtn');
+
+      if (!name || !email || !password || !confirmPassword) {
+        showAlert('Please fill in all fields', 'error');
+        return;
+      }
+
+      if (password !== confirmPassword) {
+        showAlert('Passwords do not match', 'error');
+        return;
+      }
+
+      if (password.length < 8) {
+        showAlert('Password must be at least 8 characters long', 'error');
+        return;
+      }
+
+      signupBtn.classList.add('loading');
+      signupBtn.disabled = true;
+
+      try {
+        const response = await fetch('https://boxofficepredictor-backend.onrender.com/api/auth/register', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          credentials: 'include',
+          body: JSON.stringify({ name, email, password }),
+        });
+
+        const data = await response.json();
+
+        if (response.ok) {
+          showAlert('Account created successfully! You can now sign in.', 'success');
+          // Clear the signup form
+          document.getElementById('signupForm').reset();
+          document.getElementById('strengthBar').style.width = '0%';
+          document.getElementById('strengthText').textContent = '';
+          
+          setTimeout(() => {
+            showLogin();
+            document.getElementById('loginEmail').value = email;
+          }, 2000);
+        } else {
+          // Handle different error cases based on your backend responses
+          if (response.status === 400) {
+            showAlert(data.message || 'Please check your input and try again.', 'error');
+          } else if (response.status === 409 || response.status === 422) {
+            showAlert('An account with this email already exists. Please sign in instead.', 'error');
+          } else {
+            showAlert(data.message || 'Registration failed. Please try again.', 'error');
+          }
+        }
+      } catch (error) {
+        console.error('Signup error:', error);
+        showAlert('Network error. Please check your connection and try again.', 'error');
+      } finally {
+        signupBtn.classList.remove('loading');
+        signupBtn.disabled = false;
+      }
+    });
+
+    // Initialize
+    createParticles();
+
+    // Check if user is already logged in
+    if (sessionStorage.getItem('token')) {
+      window.location.href = './auth.html';
+    }
+
+    if ("serviceWorker" in navigator) {
+  navigator.serviceWorker.register("service-worker.js")
+    .then(reg => console.log("Service Worker registered:", reg))
+    .catch(err => console.log("Service Worker registration failed:", err));
+}
+
+  </script>
 </body>
 </html>

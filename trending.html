@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" href="./favicon.ico" sizes="any">
+  <title>🎬 BoxOfficePredictor+ | Trending</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <!-- Particles Background -->
+  <div class="particles" id="particles"></div>
+
+  <!-- Header -->
+  <header class="header">
+    <div class="header-content">
+      <div class="logo">🎬 BoxOfficePredictor+</div>
+      <nav class="nav-links">
+        <a href="./auth.html" class="nav-link">Predictor</a>
+        <a href="./analytics.html" class="nav-link">Analytics</a>
+        <a href="./trending.html" class="nav-link active">Trending</a>
+        <a href="./about.html" class="nav-link">About</a>
+        <a href="./logout.html" class="nav-link logout-link"> 
+          <span class="logout-icon">
+            🚪
+          </span>
+          Logout
+        </a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <div class="main-container trending-container">
+    <div class="trending-section-main floating">
+      <h1 class="section-title">Trending Movies</h1>
+      <p class="section-subtitle">
+        Discover the hottest movies making waves in the box office and social media buzz.
+      </p>
+
+      <!-- Trending Categories -->
+      <div class="trending-categories">
+        <button class="category-btn active" data-category="all">🔥 All Trending</button>
+        <button class="category-btn" data-category="box-office">💰 Box Office</button>
+        <button class="category-btn" data-category="social">📱 Social Buzz</button>
+        <button class="category-btn" data-category="upcoming">🎬 Upcoming</button>
+      </div>
+
+      <!-- Featured Movie -->
+      <div class="featured-movie">
+        <div class="featured-movie-backdrop">
+          <div class="featured-movie-gradient"></div>
+          <div class="featured-movie-content">
+            <div class="featured-movie-info">
+              <h2 class="featured-title">Quantum Dimensions</h2>
+              <div class="featured-meta">
+                <span class="genre-badge">Sci-Fi</span>
+                <span class="rating">⭐ 9.2</span>
+                <span class="trending-indicator">🔥 #1 Trending</span>
+              </div>
+              <p class="featured-description">
+                A mind-bending journey through parallel universes where a brilliant physicist 
+                discovers the key to interdimensional travel, but at what cost?
+              </p>
+              <div class="featured-stats">
+                <div class="stat-item">
+                  <div class="stat-value">$342M</div>
+                  <div class="stat-label">Predicted Revenue</div>
+                </div>
+                <div class="stat-item">
+                  <div class="stat-value">2.4M</div>
+                  <div class="stat-label">Social Mentions</div>
+                </div>
+                <div class="stat-item">
+                  <div class="stat-value">87%</div>
+                  <div class="stat-label">Prediction Confidence</div>
+                </div>
+              </div>
+              <button class="analyze-btn">🎯 Analyze This Movie</button>
+            </div>
+            <div class="featured-movie-poster">
+              <div class="poster-container">
+                <div class="poster-emoji">🌌</div>
+                <div class="poster-glow"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Trending Movies Grid -->
+      <div class="trending-grid">
+        <div class="trending-card" data-category="box-office">
+          <div class="card-poster">
+            <div class="poster-emoji">🦸‍♂️</div>
+            <div class="trending-rank">#2</div>
+            <div class="trending-badge">Box Office</div>
+          </div>
+          <div class="card-content">
+            <h3 class="card-title">Heroes Unite</h3>
+            <div class="card-meta">
+              <span class="genre">Action</span>
+              <span class="rating">⭐ 8.7</span>
+            </div>
+            <div class="prediction-info">
+              <div class="prediction-value">$289M</div>
+              <div class="prediction-label">Predicted Revenue</div>
+            </div>
+            <div class="buzz-meter">
+              <div class="buzz-fill" style="width: 92%"></div>
+              <span class="buzz-text">92% Buzz Score</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="trending-card" data-category="social">
+          <div class="card-poster">
+            <div class="poster-emoji">👻</div>
+            <div class="trending-rank">#3</div>
+            <div class="trending-badge">Social Buzz</div>
+          </div>
+          <div class="card-content">
+            <h3 class="card-title">Haunted Legacy</h3>
+            <div class="card-meta">
+              <span class="genre">Horror</span>
+              <span class="rating">⭐ 8.1</span>
+            </div>
+            <div class="prediction-info">
+              <div class="prediction-value">$156M</div>
+              <div class="prediction-label">Predicted Revenue</div>
+            </div>
+            <div class="buzz-meter">
+              <div class="buzz-fill" style="width: 88%"></div>
+              <span class="buzz-text">88% Buzz Score</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="trending-card" data-category="upcoming">
+          <div class="card-poster">
+            <div class="poster-emoji">🚀</div>
+            <div class="trending-rank">#4</div>
+            <div class="trending-badge">Upcoming</div>
+          </div>
+          <div class="card-content">
+            <h3 class="card-title">Mars Colony</h3>
+            <div class="card-meta">
+              <span class="genre">Sci-Fi</span>
+              <span class="rating">⭐ 8.9</span>
+            </div>
+            <div class="prediction-info">
+              <div class="prediction-value">$412M</div>
+              <div class="prediction-label">Predicted Revenue</div>
+            </div>
+            <div class="buzz-meter">
+              <div class="buzz-fill" style="width: 95%"></div>
+              <span class="buzz-text">95% Buzz Score</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="trending-card" data-category="box-office">
+          <div class="card-poster">
+            <div class="poster-emoji">💎</div>
+            <div class="trending-rank">#5</div>
+            <div class="trending-badge">Box Office</div>
+          </div>
+          <div class="card-content">
+            <h3 class="card-title">Diamond Heist</h3>
+            <div class="card-meta">
+              <span class="genre">Thriller</span>
+              <span class="rating">⭐ 8.4</span>
+            </div>
+            <div class="prediction-info">
+              <div class="prediction-value">$198M</div>
+              <div class="prediction-label">Predicted Revenue</div>
+            </div>
+            <div class="buzz-meter">
+              <div class="buzz-fill" style="width: 76%"></div>
+              <span class="buzz-text">76% Buzz Score</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="trending-card" data-category="social">
+          <div class="card-poster">
+            <div class="poster-emoji">🎭</div>
+            <div class="trending-rank">#6</div>
+            <div class="trending-badge">Social Buzz</div>
+          </div>
+          <div class="card-content">
+            <h3 class="card-title">Shakespeare's Return</h3>
+            <div class="card-meta">
+              <span class="genre">Drama</span>
+              <span class="rating">⭐ 9.0</span>
+            </div>
+            <div class="prediction-info">
+              <div class="prediction-value">$87M</div>
+              <div class="prediction-label">Predicted Revenue</div>
+            </div>
+            <div class="buzz-meter">
+              <div class="buzz-fill" style="width: 82%"></div>
+              <span class="buzz-text">82% Buzz Score</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="trending-card" data-category="upcoming">
+          <div class="card-poster">
+            <div class="poster-emoji">🐉</div>
+            <div class="trending-rank">#7</div>
+            <div class="trending-badge">Upcoming</div>
+          </div>
+          <div class="card-content">
+            <h3 class="card-title">Dragon's Dawn</h3>
+            <div class="card-meta">
+              <span class="genre">Fantasy</span>
+              <span class="rating">⭐ 8.8</span>
+            </div>
+            <div class="prediction-info">
+              <div class="prediction-value">$523M</div>
+              <div class="prediction-label">Predicted Revenue</div>
+            </div>
+            <div class="buzz-meter">
+              <div class="buzz-fill" style="width: 91%"></div>
+              <span class="buzz-text">91% Buzz Score</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Social Media Trends -->
+      <div class="social-trends-section">
+        <h2 class="trends-title">📱 Social Media Trends</h2>
+        <div class="trends-grid">
+          <div class="trend-item">
+            <div class="trend-hashtag">#QuantumDimensions</div>
+            <div class="trend-count">2.4M mentions</div>
+            <div class="trend-change positive">+342%</div>
+          </div>
+          <div class="trend-item">
+            <div class="trend-hashtag">#HeroesUnite</div>
+            <div class="trend-count">1.8M mentions</div>
+            <div class="trend-change positive">+156%</div>
+          </div>
+          <div class="trend-item">
+            <div class="trend-hashtag">#MarsColony</div>
+            <div class="trend-count">1.2M mentions</div>
+            <div class="trend-change positive">+289%</div>
+          </div>
+          <div class="trend-item">
+            <div class="trend-hashtag">#DragonsDawn</div>
+            <div class="trend-count">987K mentions</div>
+            <div class="trend-change positive">+198%</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="trending.js"></script>
+</body>
+</html>

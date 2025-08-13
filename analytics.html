@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" href="./favicon.ico" sizes="any">
+  <title>🎬 BoxOfficePredictor+ | Analytics</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
+</head>
+<body>
+  <!-- Particles Background -->
+  <div class="particles" id="particles"></div>
+
+  <!-- Header -->
+  <header class="header">
+    <div class="header-content">
+      <div class="logo">🎬 BoxOfficePredictor+</div>
+      <nav class="nav-links">
+        <a href="./auth.html" class="nav-link">Predictor</a>
+        <a href="./analytics.html" class="nav-link active">Analytics</a>
+        <a href="./trending.html" class="nav-link">Trending</a>
+        <a href="./about.html" class="nav-link">About</a>
+        <a href="./logout.html" class="nav-link logout-link"> 
+          <span class="logout-icon">
+            🚪
+          </span>
+          Logout
+        </a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <div class="main-container analytics-container">
+    <div class="analytics-section floating">
+      <h1 class="section-title">Box Office Analytics</h1>
+      <p class="section-subtitle">
+        Explore comprehensive analytics and insights from box office predictions and historical data.
+      </p>
+
+      <!-- Analytics Dashboard -->
+      <div class="analytics-dashboard">
+        <!-- Stats Cards -->
+        <div class="stats-grid">
+          <div class="stat-card">
+            <div class="stat-icon">🎯</div>
+            <div class="stat-number" id="predictionsCount">12,847</div>
+            <div class="stat-label">Total Predictions</div>
+            <div class="stat-change positive">+23% this month</div>
+          </div>
+          
+          <div class="stat-card">
+            <div class="stat-icon">📊</div>
+            <div class="stat-number" id="accuracyRate">87.3%</div>
+            <div class="stat-label">Accuracy Rate</div>
+            <div class="stat-change positive">+2.1% improvement</div>
+          </div>
+          
+          <div class="stat-card">
+            <div class="stat-icon">💰</div>
+            <div class="stat-number" id="avgRevenue">$147M</div>
+            <div class="stat-label">Avg Predicted Revenue</div>
+            <div class="stat-change negative">-5.2% vs last quarter</div>
+          </div>
+          
+          <div class="stat-card">
+            <div class="stat-icon">🏆</div>
+            <div class="stat-number" id="blockbusters">234</div>
+            <div class="stat-label">Predicted Blockbusters</div>
+            <div class="stat-change positive">+18% success rate</div>
+          </div>
+        </div>
+
+        <!-- Charts Section -->
+        <div class="charts-section">
+          <div class="chart-container">
+            <div class="chart-header">
+              <h3>Monthly Prediction Trends</h3>
+              <div class="chart-controls">
+                <button class="chart-btn active" data-period="6m">6M</button>
+                <button class="chart-btn" data-period="1y">1Y</button>
+                <button class="chart-btn" data-period="all">All</button>
+              </div>
+            </div>
+            <canvas id="trendChart"></canvas>
+          </div>
+
+          <div class="chart-container">
+            <div class="chart-header">
+              <h3>Genre Performance Distribution</h3>
+            </div>
+            <canvas id="genreChart"></canvas>
+          </div>
+        </div>
+
+        <!-- Performance Table -->
+        <div class="performance-table-container">
+          <div class="table-header">
+            <h3>Recent Predictions Performance</h3>
+            <div class="table-filters">
+              <select class="filter-select" id="genreFilter">
+                <option value="all">All Genres</option>
+                <option value="action">Action</option>
+                <option value="drama">Drama</option>
+                <option value="comedy">Comedy</option>
+                <option value="thriller">Thriller</option>
+              </select>
+              <select class="filter-select" id="statusFilter">
+                <option value="all">All Status</option>
+                <option value="hit">Hit</option>
+                <option value="moderate">Moderate</option>
+                <option value="flop">Flop</option>
+              </select>
+            </div>
+          </div>
+          
+          <div class="performance-table">
+            <table id="performanceTable">
+              <thead>
+                <tr>
+                  <th>Movie Title</th>
+                  <th>Genre</th>
+                  <th>Predicted Revenue</th>
+                  <th>Actual Revenue</th>
+                  <th>Accuracy</th>
+                  <th>Status</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>
+                    <div class="movie-cell">
+                      <div class="movie-poster-small">🦸</div>
+                      <span>Superhero Chronicles</span>
+                    </div>
+                  </td>
+                  <td><span class="genre-tag action">Action</span></td>
+                  <td>$245M</td>
+                  <td>$267M</td>
+                  <td><span class="accuracy-badge high">91%</span></td>
+                  <td><span class="status-badge hit">Hit</span></td>
+                </tr>
+                <tr>
+                  <td>
+                    <div class="movie-cell">
+                      <div class="movie-poster-small">🎭</div>
+                      <span>Drama of Hearts</span>
+                    </div>
+                  </td>
+                  <td><span class="genre-tag drama">Drama</span></td>
+                  <td>$89M</td>
+                  <td>$76M</td>
+                  <td><span class="accuracy-badge medium">85%</span></td>
+                  <td><span class="status-badge moderate">Moderate</span></td>
+                </tr>
+                <tr>
+                  <td>
+                    <div class="movie-cell">
+                      <div class="movie-poster-small">😂</div>
+                      <span>Comedy Central</span>
+                    </div>
+                  </td>
+                  <td><span class="genre-tag comedy">Comedy</span></td>
+                  <td>$123M</td>
+                  <td>$134M</td>
+                  <td><span class="accuracy-badge high">92%</span></td>
+                  <td><span class="status-badge hit">Hit</span></td>
+                </tr>
+                <tr>
+                  <td>
+                    <div class="movie-cell">
+                      <div class="movie-poster-small">🔥</div>
+                      <span>Thriller Night</span>
+                    </div>
+                  </td>
+                  <td><span class="genre-tag thriller">Thriller</span></td>
+                  <td>$67M</td>
+                  <td>$45M</td>
+                  <td><span class="accuracy-badge low">67%</span></td>
+                  <td><span class="status-badge flop">Flop</span></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="analytics.js"></script>
+</body>
+</html>

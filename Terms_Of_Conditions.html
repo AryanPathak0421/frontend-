@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" href="./favicon.ico" sizes="any">
+  <title>🎬 BoxOfficePredictor+ | Terms of Service</title>
+  <style>
+    /* Global Styles */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background: linear-gradient(135deg, #0f0f1a 0%, #1a1a2e 50%, #16213e 100%);
+      min-height: 100vh;
+      color: #fff;
+      overflow-x: hidden;
+      line-height: 1.6;
+    }
+
+    /* Particles Background */
+    .particles {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: -1;
+    }
+
+    .particle {
+      position: absolute;
+      width: 2px;
+      height: 2px;
+      background: rgba(245, 197, 24, 0.3);
+      border-radius: 50%;
+      animation: particleFloat 20s linear infinite;
+    }
+
+    @keyframes particleFloat {
+      0% {
+        transform: translateY(100vh) rotate(0deg);
+        opacity: 0;
+      }
+      10% {
+        opacity: 1;
+      }
+      90% {
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(-100px) rotate(360deg);
+        opacity: 0;
+      }
+    }
+
+    /* Header */
+    .header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      background: rgba(15, 15, 26, 0.9);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      z-index: 1000;
+      padding: 1rem 0;
+    }
+
+    .header-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: #f5c518;
+      text-shadow: 0 0 20px rgba(245, 197, 24, 0.5);
+      text-decoration: none;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+    }
+
+    .nav-link {
+      color: rgba(255, 255, 255, 0.8);
+      text-decoration: none;
+      font-weight: 500;
+      transition: all 0.3s ease;
+      padding: 0.5rem 1rem;
+      border-radius: 8px;
+    }
+
+    .nav-link:hover {
+      color: #f5c518;
+      background: rgba(245, 197, 24, 0.1);
+    }
+
+    /* Main Container */
+    .main-container {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 8rem 2rem 4rem;
+    }
+
+    /* Content Card */
+    .content-card {
+      background: rgba(255, 255, 255, 0.05);
+      backdrop-filter: blur(20px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 20px;
+      padding: 3rem;
+      position: relative;
+      overflow: hidden;
+      animation: float 6s ease-in-out infinite;
+    }
+
+    .content-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, #f5c518, transparent);
+      animation: shimmer 3s infinite;
+    }
+
+    @keyframes shimmer {
+      0% { left: -100%; }
+      100% { left: 100%; }
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-10px); }
+    }
+
+    /* Typography */
+    .page-title {
+      font-size: 3rem;
+      font-weight: 700;
+      background: linear-gradient(135deg, #fff 0%, #f5c518 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      text-align: center;
+      margin-bottom: 1rem;
+    }
+
+    .page-subtitle {
+      color: rgba(255, 255, 255, 0.7);
+      text-align: center;
+      font-size: 1.1rem;
+      margin-bottom: 3rem;
+    }
+
+    .last-updated {
+      color: rgba(255, 255, 255, 0.6);
+      text-align: center;
+      font-size: 0.9rem;
+      margin-bottom: 3rem;
+      font-style: italic;
+    }
+
+    .section-title {
+      font-size: 1.8rem;
+      font-weight: 600;
+      color: #f5c518;
+      margin: 2.5rem 0 1rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 2px solid rgba(245, 197, 24, 0.3);
+    }
+
+    .content-text {
+      color: rgba(255, 255, 255, 0.9);
+      margin-bottom: 1.5rem;
+      font-size: 1rem;
+    }
+
+    .content-list {
+      color: rgba(255, 255, 255, 0.9);
+      margin: 1rem 0 1.5rem 1.5rem;
+    }
+
+    .content-list li {
+      margin-bottom: 0.8rem;
+      position: relative;
+    }
+
+    .content-list li::before {
+      content: '•';
+      color: #f5c518;
+      font-weight: bold;
+      position: absolute;
+      left: -1rem;
+    }
+
+    .highlight {
+      color: #f5c518;
+      font-weight: 600;
+    }
+
+    .warning-box {
+      background: rgba(255, 193, 7, 0.1);
+      border: 1px solid rgba(255, 193, 7, 0.3);
+      border-radius: 12px;
+      padding: 1.5rem;
+      margin: 2rem 0;
+    }
+
+    .warning-title {
+      color: #ffc107;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+    }
+
+    /* Contact Section */
+    .contact-section {
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 12px;
+      padding: 2rem;
+      margin-top: 3rem;
+      text-align: center;
+    }
+
+    .contact-title {
+      color: #f5c518;
+      font-size: 1.5rem;
+      font-weight: 600;
+      margin-bottom: 1rem;
+    }
+
+    .contact-email {
+      color: #4caf50;
+      font-weight: 600;
+      text-decoration: none;
+      font-size: 1.1rem;
+    }
+
+    .contact-email:hover {
+      text-shadow: 0 0 10px rgba(76, 175, 80, 0.5);
+    }
+
+    /* Back Button */
+    .back-button {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: rgba(255, 255, 255, 0.8);
+      text-decoration: none;
+      font-weight: 600;
+      padding: 1rem 2rem;
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 12px;
+      transition: all 0.3s ease;
+      margin-bottom: 2rem;
+    }
+
+    .back-button:hover {
+      background: rgba(245, 197, 24, 0.1);
+      border-color: #f5c518;
+      color: #f5c518;
+      transform: translateY(-2px);
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .main-container {
+        padding: 6rem 1rem 2rem;
+      }
+
+      .content-card {
+        padding: 2rem;
+      }
+
+      .page-title {
+        font-size: 2.5rem;
+      }
+
+      .nav-links {
+        display: none;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Particles Background -->
+  <div class="particles" id="particles"></div>
+
+  <!-- Header -->
+  <header class="header">
+    <div class="header-content">
+      <a href="./index.html" class="logo">🎬 BoxOfficePredictor+</a>
+      <nav class="nav-links">
+        <a href="./index.html" class="nav-link">Predictor</a>
+        <a href="./index.html" class="nav-link">Analytics</a>
+        <a href="./index.html" class="nav-link">Trending</a>
+        <a href="./index.html" class="nav-link">About</a>
+        <a href="./index.html" class="nav-link">Account</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Main Container -->
+  <div class="main-container">
+    <div class="content-card">
+      <a href="./index.html" class="back-button">
+        ← Back to Authentication
+      </a>
+
+      <h1 class="page-title">Terms of Service</h1>
+      <p class="page-subtitle">BoxOfficePredictor+ AI-Powered Movie Analytics Platform</p>
+      <p class="last-updated">Last Updated: August 2025</p>
+
+      <div class="warning-box">
+        <div class="warning-title">⚠️ Important Notice</div>
+        <p class="content-text">By accessing and using BoxOfficePredictor+, you acknowledge that you have read, understood, and agree to be bound by these Terms of Service.</p>
+      </div>
+
+      <h2 class="section-title">1. Acceptance of Terms</h2>
+      <p class="content-text">
+        Welcome to BoxOfficePredictor+! These Terms of Service ("Terms") govern your use of our AI-powered movie analytics platform, including our website, services, and applications (collectively, the "Service"). By accessing or using our Service, you agree to be bound by these Terms.
+      </p>
+
+      <h2 class="section-title">2. Description of Service</h2>
+      <p class="content-text">
+        BoxOfficePredictor+ is an <span class="highlight">AI-powered platform</span> that provides:
+      </p>
+      <ul class="content-list">
+        <li>Box office performance predictions for movies</li>
+        <li>Movie analytics and trending data</li>
+        <li>Entertainment industry insights</li>
+        <li>User account management and personalized experiences</li>
+      </ul>
+
+      <h2 class="section-title">3. User Accounts and Registration</h2>
+      <p class="content-text">
+        To access certain features of our Service, you must create an account. You agree to:
+      </p>
+      <ul class="content-list">
+        <li>Provide accurate and complete information during registration</li>
+        <li>Maintain the security of your password and account</li>
+        <li>Accept responsibility for all activities under your account</li>
+        <li>Notify us immediately of any unauthorized use of your account</li>
+      </ul>
+
+      <h2 class="section-title">4. Acceptable Use Policy</h2>
+      <p class="content-text">
+        You agree not to use the Service to:
+      </p>
+      <ul class="content-list">
+        <li>Violate any applicable laws or regulations</li>
+        <li>Infringe upon intellectual property rights</li>
+        <li>Transmit harmful, offensive, or inappropriate content</li>
+        <li>Attempt to gain unauthorized access to our systems</li>
+        <li>Use automated tools to scrape or extract data</li>
+        <li>Interfere with the proper functioning of the Service</li>
+      </ul>
+
+      <h2 class="section-title">5. Predictions and Data Accuracy</h2>
+      <div class="warning-box">
+        <div class="warning-title">📊 Prediction Disclaimer</div>
+        <p class="content-text">
+          Our AI predictions are based on historical data and algorithms. <span class="highlight">We do not guarantee the accuracy</span> of predictions and they should be used for entertainment and informational purposes only. Past performance does not guarantee future results.
+        </p>
+      </div>
+
+      <h2 class="section-title">6. Intellectual Property Rights</h2>
+      <p class="content-text">
+        The Service and its original content, features, and functionality are owned by BoxOfficePredictor+ and are protected by:
+      </p>
+      <ul class="content-list">
+        <li>Copyright laws</li>
+        <li>Trademark laws</li>
+        <li>Patent laws</li>
+        <li>Other intellectual property rights</li>
+      </ul>
+
+      <h2 class="section-title">7. Privacy and Data Protection</h2>
+      <p class="content-text">
+        Your privacy is important to us. Our collection and use of personal information is governed by our <a href="./Privacy_Policy.html" class="highlight">Privacy Policy</a>, which is incorporated into these Terms by reference.
+      </p>
+
+      <h2 class="section-title">8. Limitation of Liability</h2>
+      <p class="content-text">
+        To the maximum extent permitted by law, BoxOfficePredictor+ shall not be liable for any indirect, incidental, special, consequential, or punitive damages, including but not limited to:
+      </p>
+      <ul class="content-list">
+        <li>Loss of profits or revenue</li>
+        <li>Loss of data or information</li>
+        <li>Business interruption</li>
+        <li>Personal injury or property damage</li>
+      </ul>
+
+      <h2 class="section-title">9. Service Availability</h2>
+      <p class="content-text">
+        We strive to maintain high availability but cannot guarantee uninterrupted service. We reserve the right to:
+      </p>
+      <ul class="content-list">
+        <li>Modify or discontinue the Service with or without notice</li>
+        <li>Perform scheduled maintenance</li>
+        <li>Update features and functionality</li>
+        <li>Suspend accounts that violate these Terms</li>
+      </ul>
+
+      <h2 class="section-title">10. Termination</h2>
+      <p class="content-text">
+        We may terminate or suspend your account and access to the Service immediately, without prior notice, for conduct that we believe violates these Terms or is harmful to other users, us, or third parties.
+      </p>
+
+      <h2 class="section-title">11. Changes to Terms</h2>
+      <p class="content-text">
+        We reserve the right to modify these Terms at any time. We will notify users of significant changes by:
+      </p>
+      <ul class="content-list">
+        <li>Posting the updated Terms on our website</li>
+        <li>Updating the "Last Updated" date</li>
+        <li>Sending email notifications for material changes</li>
+      </ul>
+
+      <h2 class="section-title">12. Governing Law</h2>
+      <p class="content-text">
+        These Terms shall be governed by and construed in accordance with the laws of the jurisdiction where BoxOfficePredictor+ operates, without regard to conflict of law principles.
+      </p>
+
+      <h2 class="section-title">13. Contact Information</h2>
+      <div class="contact-section">
+        <h3 class="contact-title">Questions About These Terms?</h3>
+        <p class="content-text">If you have any questions about these Terms of Service, please contact us:</p>
+        <a href="mailto:aryanpathak0421@gmail.com" class="contact-email">aryanpathak0421@gmail.com</a>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Initialize particles
+    function createParticles() {
+      const particlesContainer = document.getElementById('particles');
+      const particleCount = 50;
+
+      for (let i = 0; i < particleCount; i++) {
+        const particle = document.createElement('div');
+        particle.className = 'particle';
+        particle.style.left = Math.random() * 100 + '%';
+        particle.style.animationDelay = Math.random() * 20 + 's';
+        particle.style.animationDuration = (Math.random() * 10 + 15) + 's';
+        particlesContainer.appendChild(particle);
+      }
+    }
+    if ("serviceWorker" in navigator) {
+  navigator.serviceWorker.register("service-worker.js")
+    .then(reg => console.log("Service Worker registered:", reg))
+    .catch(err => console.log("Service Worker registration failed:", err));
+}
+
+
+    // Initialize
+    createParticles();
+  </script>
+</body>
+</html>
