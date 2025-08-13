@@ -1,0 +1,622 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" href="./favicon.ico" sizes="any">
+  <title>🎬 BoxOfficePredictor+ | Privacy Policy</title>
+  <style>
+    /* Global Styles */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background: linear-gradient(135deg, #0f0f1a 0%, #1a1a2e 50%, #16213e 100%);
+      min-height: 100vh;
+      color: #fff;
+      overflow-x: hidden;
+      line-height: 1.6;
+    }
+
+    /* Particles Background */
+    .particles {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: -1;
+    }
+
+    .particle {
+      position: absolute;
+      width: 2px;
+      height: 2px;
+      background: rgba(245, 197, 24, 0.3);
+      border-radius: 50%;
+      animation: particleFloat 20s linear infinite;
+    }
+
+    @keyframes particleFloat {
+      0% {
+        transform: translateY(100vh) rotate(0deg);
+        opacity: 0;
+      }
+      10% {
+        opacity: 1;
+      }
+      90% {
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(-100px) rotate(360deg);
+        opacity: 0;
+      }
+    }
+
+    /* Header */
+    .header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      background: rgba(15, 15, 26, 0.9);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      z-index: 1000;
+      padding: 1rem 0;
+    }
+
+    .header-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: #f5c518;
+      text-shadow: 0 0 20px rgba(245, 197, 24, 0.5);
+      text-decoration: none;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+    }
+
+    .nav-link {
+      color: rgba(255, 255, 255, 0.8);
+      text-decoration: none;
+      font-weight: 500;
+      transition: all 0.3s ease;
+      padding: 0.5rem 1rem;
+      border-radius: 8px;
+    }
+
+    .nav-link:hover {
+      color: #f5c518;
+      background: rgba(245, 197, 24, 0.1);
+    }
+
+    /* Main Container */
+    .main-container {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 8rem 2rem 4rem;
+    }
+
+    /* Content Card */
+    .content-card {
+      background: rgba(255, 255, 255, 0.05);
+      backdrop-filter: blur(20px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 20px;
+      padding: 3rem;
+      position: relative;
+      overflow: hidden;
+      animation: float 6s ease-in-out infinite;
+    }
+
+    .content-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, #f5c518, transparent);
+      animation: shimmer 3s infinite;
+    }
+
+    @keyframes shimmer {
+      0% { left: -100%; }
+      100% { left: 100%; }
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-10px); }
+    }
+
+    /* Typography */
+    .page-title {
+      font-size: 3rem;
+      font-weight: 700;
+      background: linear-gradient(135deg, #fff 0%, #f5c518 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      text-align: center;
+      margin-bottom: 1rem;
+    }
+
+    .page-subtitle {
+      color: rgba(255, 255, 255, 0.7);
+      text-align: center;
+      font-size: 1.1rem;
+      margin-bottom: 3rem;
+    }
+
+    .last-updated {
+      color: rgba(255, 255, 255, 0.6);
+      text-align: center;
+      font-size: 0.9rem;
+      margin-bottom: 3rem;
+      font-style: italic;
+    }
+
+    .section-title {
+      font-size: 1.8rem;
+      font-weight: 600;
+      color: #f5c518;
+      margin: 2.5rem 0 1rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 2px solid rgba(245, 197, 24, 0.3);
+    }
+
+    .content-text {
+      color: rgba(255, 255, 255, 0.9);
+      margin-bottom: 1.5rem;
+      font-size: 1rem;
+    }
+
+    .content-list {
+      color: rgba(255, 255, 255, 0.9);
+      margin: 1rem 0 1.5rem 1.5rem;
+    }
+
+    .content-list li {
+      margin-bottom: 0.8rem;
+      position: relative;
+    }
+
+    .content-list li::before {
+      content: '•';
+      color: #f5c518;
+      font-weight: bold;
+      position: absolute;
+      left: -1rem;
+    }
+
+    .highlight {
+      color: #f5c518;
+      font-weight: 600;
+    }
+
+    .privacy-highlight {
+      color: #4caf50;
+      font-weight: 600;
+    }
+
+    .security-box {
+      background: rgba(76, 175, 80, 0.1);
+      border: 1px solid rgba(76, 175, 80, 0.3);
+      border-radius: 12px;
+      padding: 1.5rem;
+      margin: 2rem 0;
+    }
+
+    .security-title {
+      color: #4caf50;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+    }
+
+    .warning-box {
+      background: rgba(255, 193, 7, 0.1);
+      border: 1px solid rgba(255, 193, 7, 0.3);
+      border-radius: 12px;
+      padding: 1.5rem;
+      margin: 2rem 0;
+    }
+
+    .warning-title {
+      color: #ffc107;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+    }
+
+    /* Data Table */
+    .data-table {
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 12px;
+      overflow: hidden;
+      margin: 2rem 0;
+    }
+
+    .data-table table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    .data-table th,
+    .data-table td {
+      padding: 1rem;
+      text-align: left;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .data-table th {
+      background: rgba(245, 197, 24, 0.1);
+      color: #f5c518;
+      font-weight: 600;
+    }
+
+    .data-table td {
+      color: rgba(255, 255, 255, 0.9);
+    }
+
+    /* Contact Section */
+    .contact-section {
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 12px;
+      padding: 2rem;
+      margin-top: 3rem;
+      text-align: center;
+    }
+
+    .contact-title {
+      color: #f5c518;
+      font-size: 1.5rem;
+      font-weight: 600;
+      margin-bottom: 1rem;
+    }
+
+    .contact-email {
+      color: #4caf50;
+      font-weight: 600;
+      text-decoration: none;
+      font-size: 1.1rem;
+    }
+
+    .contact-email:hover {
+      text-shadow: 0 0 10px rgba(76, 175, 80, 0.5);
+    }
+
+    /* Back Button */
+    .back-button {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: rgba(255, 255, 255, 0.8);
+      text-decoration: none;
+      font-weight: 600;
+      padding: 1rem 2rem;
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 12px;
+      transition: all 0.3s ease;
+      margin-bottom: 2rem;
+    }
+
+    .back-button:hover {
+      background: rgba(245, 197, 24, 0.1);
+      border-color: #f5c518;
+      color: #f5c518;
+      transform: translateY(-2px);
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .main-container {
+        padding: 6rem 1rem 2rem;
+      }
+
+      .content-card {
+        padding: 2rem;
+      }
+
+      .page-title {
+        font-size: 2.5rem;
+      }
+
+      .nav-links {
+        display: none;
+      }
+
+      .data-table {
+        overflow-x: auto;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Particles Background -->
+  <div class="particles" id="particles"></div>
+
+  <!-- Header -->
+  <header class="header">
+    <div class="header-content">
+      <a href="./index.html" class="logo">🎬 BoxOfficePredictor+</a>
+      <nav class="nav-links">
+        <a href="./index.html" class="nav-link">Predictor</a>
+        <a href="./index.html" class="nav-link">Analytics</a>
+        <a href="./index.html" class="nav-link">Trending</a>
+        <a href="./index.html" class="nav-link">About</a>
+        <a href="./index.html" class="nav-link">Account</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Main Container -->
+  <div class="main-container">
+    <div class="content-card">
+      <a href="./index.html" class="back-button">
+        ← Back to Authentication
+      </a>
+
+      <h1 class="page-title">Privacy Policy</h1>
+      <p class="page-subtitle">Your Privacy is Our Priority</p>
+      <p class="last-updated">Last Updated: January 2025</p>
+
+      <div class="security-box">
+        <div class="security-title">🔒 Privacy Commitment</div>
+        <p class="content-text">BoxOfficePredictor+ is committed to protecting your privacy and ensuring the security of your personal information. This Privacy Policy explains how we collect, use, and safeguard your data.</p>
+      </div>
+
+      <h2 class="section-title">1. Information We Collect</h2>
+      
+      <h3 class="highlight" style="margin: 1.5rem 0 1rem; font-size: 1.3rem;">Personal Information</h3>
+      <p class="content-text">When you create an account or use our services, we may collect:</p>
+      <ul class="content-list">
+        <li><span class="privacy-highlight">Name and Email Address</span> - For account creation and communication</li>
+        <li><span class="privacy-highlight">Password</span> - Securely encrypted for account access</li>
+        <li><span class="privacy-highlight">Profile Preferences</span> - To personalize your experience</li>
+      </ul>
+
+      <h3 class="highlight" style="margin: 1.5rem 0 1rem; font-size: 1.3rem;">Usage Data</h3>
+      <p class="content-text">We automatically collect certain information when you use our platform:</p>
+      <ul class="content-list">
+        <li>Movie search queries and prediction requests</li>
+        <li>Pages visited and features used</li>
+        <li>Time spent on different sections</li>
+        <li>Device and browser information</li>
+        <li>IP address and general location data</li>
+      </ul>
+
+      <h3 class="highlight" style="margin: 1.5rem 0 1rem; font-size: 1.3rem;">Technical Data</h3>
+      <div class="data-table">
+        <table>
+          <thead>
+            <tr>
+              <th>Data Type</th>
+              <th>Purpose</th>
+              <th>Retention Period</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Session Tokens</td>
+              <td>Authentication & Security</td>
+              <td>Until logout or expiry</td>
+            </tr>
+            <tr>
+              <td>Analytics Data</td>
+              <td>Service Improvement</td>
+              <td>12 months</td>
+            </tr>
+            <tr>
+              <td>Error Logs</td>
+              <td>Technical Support</td>
+              <td>30 days</td>
+            </tr>
+            <tr>
+              <td>User Preferences</td>
+              <td>Personalization</td>
+              <td>Until account deletion</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h2 class="section-title">2. How We Use Your Information</h2>
+      <p class="content-text">We use the collected information for the following purposes:</p>
+
+      <h3 class="highlight" style="margin: 1.5rem 0 1rem; font-size: 1.3rem;">Service Provision</h3>
+      <ul class="content-list">
+        <li>Provide AI-powered box office predictions</li>
+        <li>Maintain and improve our analytics algorithms</li>
+        <li>Personalize your user experience</li>
+        <li>Enable account management features</li>
+      </ul>
+
+      <h3 class="highlight" style="margin: 1.5rem 0 1rem; font-size: 1.3rem;">Communication</h3>
+      <ul class="content-list">
+        <li>Send important service updates and notifications</li>
+        <li>Respond to customer support inquiries</li>
+        <li>Share relevant industry insights (with your consent)</li>
+      </ul>
+
+      <h3 class="highlight" style="margin: 1.5rem 0 1rem; font-size: 1.3rem;">Security & Legal</h3>
+      <ul class="content-list">
+        <li>Protect against fraud and unauthorized access</li>
+        <li>Comply with legal obligations</li>
+        <li>Enforce our Terms of Service</li>
+      </ul>
+
+      <h2 class="section-title">3. Data Security Measures</h2>
+      <div class="security-box">
+        <div class="security-title">🛡️ Our Security Commitment</div>
+        <p class="content-text">We implement industry-standard security measures to protect your data:</p>
+      </div>
+
+      <ul class="content-list">
+        <li><span class="privacy-highlight">Encryption</span> - All data is encrypted in transit and at rest</li>
+        <li><span class="privacy-highlight">Secure Authentication</span> - JWT tokens with expiration</li>
+        <li><span class="privacy-highlight">Access Controls</span> - Limited employee access on need-to-know basis</li>
+        <li><span class="privacy-highlight">Regular Security Audits</span> - Ongoing monitoring and testing</li>
+        <li><span class="privacy-highlight">Secure Infrastructure</span> - Cloud hosting with enterprise security</li>
+      </ul>
+
+      <h2 class="section-title">4. Data Sharing and Third Parties</h2>
+      <p class="content-text">We value your privacy and <span class="highlight">do not sell your personal information</span>. We may share data only in these limited circumstances:</p>
+
+      <h3 class="highlight" style="margin: 1.5rem 0 1rem; font-size: 1.3rem;">Service Providers</h3>
+      <ul class="content-list">
+        <li>Cloud hosting services (for infrastructure)</li>
+        <li>Analytics providers (for service improvement)</li>
+        <li>Authentication services (for secure login)</li>
+      </ul>
+
+      <h3 class="highlight" style="margin: 1.5rem 0 1rem; font-size: 1.3rem;">Legal Requirements</h3>
+      <ul class="content-list">
+        <li>When required by law or court order</li>
+        <li>To protect our legal rights</li>
+        <li>In case of emergency to protect safety</li>
+      </ul>
+
+      <h2 class="section-title">5. Your Privacy Rights</h2>
+      <p class="content-text">You have the following rights regarding your personal data:</p>
+
+      <div class="security-box">
+        <div class="security-title">✨ Your Data Rights</div>
+        <ul class="content-list">
+          <li><span class="privacy-highlight">Access</span> - Request a copy of your personal data</li>
+          <li><span class="privacy-highlight">Rectification</span> - Correct inaccurate information</li>
+          <li><span class="privacy-highlight">Erasure</span> - Request deletion of your data</li>
+          <li><span class="privacy-highlight">Portability</span> - Export your data in a readable format</li>
+          <li><span class="privacy-highlight">Objection</span> - Opt-out of certain data processing</li>
+        </ul>
+      </div>
+
+      <h2 class="section-title">6. Cookies and Tracking</h2>
+      <p class="content-text">We use cookies and similar technologies to enhance your experience:</p>
+
+      <h3 class="highlight" style="margin: 1.5rem 0 1rem; font-size: 1.3rem;">Essential Cookies</h3>
+      <ul class="content-list">
+        <li>Authentication and session management</li>
+        <li>Security and fraud prevention</li>
+        <li>Basic functionality and preferences</li>
+      </ul>
+
+      <h3 class="highlight" style="margin: 1.5rem 0 1rem; font-size: 1.3rem;">Analytics Cookies</h3>
+      <ul class="content-list">
+        <li>Usage statistics and performance monitoring</li>
+        <li>Feature usage analysis</li>
+        <li>Error tracking and debugging</li>
+      </ul>
+
+      <h2 class="section-title">7. Data Retention</h2>
+      <p class="content-text">We retain your data only for as long as necessary:</p>
+      <ul class="content-list">
+        <li><span class="privacy-highlight">Account Data</span> - Until you delete your account</li>
+        <li><span class="privacy-highlight">Usage Logs</span> - Maximum 12 months</li>
+        <li><span class="privacy-highlight">Support Communications</span> - 2 years after resolution</li>
+        <li><span class="privacy-highlight">Legal Obligations</span> - As required by applicable law</li>
+      </ul>
+
+      <h2 class="section-title">8. International Data Transfers</h2>
+      <p class="content-text">
+        Your data may be processed in countries other than your own. We ensure appropriate safeguards are in place, including:
+      </p>
+      <ul class="content-list">
+        <li>Adequacy decisions by regulatory authorities</li>
+        <li>Standard contractual clauses</li>
+        <li>Certification schemes and codes of conduct</li>
+      </ul>
+
+      <h2 class="section-title">9. Children's Privacy</h2>
+      <div class="warning-box">
+        <div class="warning-title">👶 Age Restriction</div>
+        <p class="content-text">
+          Our service is not intended for children under 13 years of age. We do not knowingly collect personal information from children under 13. If you become aware that a child has provided us with personal information, please contact us immediately.
+        </p>
+      </div>
+
+      <h2 class="section-title">10. Changes to This Privacy Policy</h2>
+      <p class="content-text">
+        We may update this Privacy Policy from time to time. We will notify you of any changes by:
+      </p>
+      <ul class="content-list">
+        <li>Posting the new Privacy Policy on this page</li>
+        <li>Updating the "Last Updated" date</li>
+        <li>Sending email notifications for significant changes</li>
+        <li>Displaying prominent notices on our platform</li>
+      </ul>
+
+      <h2 class="section-title">11. Contact Us</h2>
+      <p class="content-text">
+        If you have any questions about this Privacy Policy or want to exercise your rights, please contact us:
+      </p>
+
+      <div class="contact-section">
+        <h3 class="contact-title">Privacy & Data Protection</h3>
+        <p class="content-text">
+          <span class="privacy-highlight">Email:</span> 
+          <a href="mailto:aryanpathak0421@gmail.com" class="contact-email">aryanpathak0421@gmail.com</a>
+        </p>
+        <p class="content-text">
+          <span class="privacy-highlight">Response Time:</span> We aim to respond within 72 hours
+        </p>
+        <p class="content-text">
+          <span class="privacy-highlight">Data Protection Officer:</span> Available for EU residents
+        </p>
+      </div>
+
+      <div class="security-box" style="margin-top: 2rem;">
+        <div class="security-title">🤝 Our Commitment</div>
+        <p class="content-text">
+          We are committed to maintaining the trust you place in us by protecting your privacy and handling your data responsibly. Your data helps us provide better movie predictions and insights while keeping your personal information secure.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Initialize particles
+    function createParticles() {
+      const particlesContainer = document.getElementById('particles');
+      const particleCount = 50;
+
+      for (let i = 0; i < particleCount; i++) {
+        const particle = document.createElement('div');
+        particle.className = 'particle';
+        particle.style.left = Math.random() * 100 + '%';
+        particle.style.animationDelay = Math.random() * 20 + 's';
+        particle.style.animationDuration = (Math.random() * 10 + 15) + 's';
+        particlesContainer.appendChild(particle);
+      }
+    }
+
+    if ("serviceWorker" in navigator) {
+  navigator.serviceWorker.register("service-worker.js")
+    .then(reg => console.log("Service Worker registered:", reg))
+    .catch(err => console.log("Service Worker registration failed:", err));
+}
+
+    // Initialize
+    createParticles();
+  </script>
+</body>
+</html>
