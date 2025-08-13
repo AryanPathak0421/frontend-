@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>🎬 BoxOfficePredictor+ | Predictor</title>
+  <link rel="stylesheet" href="styless.css">
+</head>
+<body>
+  <!-- Particles Background -->
+  <div class="particles" id="particles"></div>
+
+  <!-- Header -->
+  <header class="header">
+    <div class="header-content">
+      <div class="logo">🎬 BoxOfficePredictor+</div>
+      <button class="mobile-menu-toggle" id="mobileMenuToggle">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+      <nav class="nav-links" id="navLinks">
+        <a href="./auth.html" class="nav-link active">Predictor</a>
+        <a href="./analytics.html" class="nav-link">Analytics</a>
+        <a href="./trending.html" class="nav-link">Trending</a>
+        <a href="./about.html" class="nav-link">About</a>
+        <a href="./logout.html" class="nav-link logout-link"> 
+          <span class="logout-icon">
+            🚪
+          </span>
+          Logout
+        </a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <div class="main-container">
+    <!-- Predictor Section -->
+    <div class="predictor-section floating">
+      <h1 class="section-title">Box Office Prediction</h1>
+      <p class="section-subtitle">
+        Enter your movie details below and let our AI-powered system predict the potential box office success.
+      </p>
+
+      <form class="prediction-form" id="predictionForm">
+        <div class="form-row">
+          <div class="form-group">
+            <input type="number" class="form-input" name="budget" placeholder="Budget (USD)" required>
+          </div>
+          <div class="form-group">
+            <input type="number" class="form-input" name="runtime" placeholder="Runtime (minutes)" required>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <input type="number" class="form-input" name="popularity" placeholder="Popularity Score" required>
+          </div>
+          <div class="form-group">
+            <input type="number" step="0.1" class="form-input" name="vote_average" placeholder="Vote Average" required>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <input type="number" class="form-input" name="vote_count" placeholder="Vote Count" required>
+        </div>
+
+        <button type="submit" class="predict-button">
+          <span class="btn-text">Analyze Movie Performance</span>
+        </button>
+      </form>
+
+      <div class="result-container" id="result">
+        <div class="result-text" id="resultText"></div>
+        <div class="result-details" id="resultDetails" style="display: none;">
+          <div class="result-stat">
+            <div class="stat-value" id="ticketSales">-</div>
+            <div class="stat-label">Predicted Sales</div>
+          </div>
+          <div class="result-stat">
+            <div class="stat-value" id="confidence">-</div>
+            <div class="stat-label">Confidence</div>
+          </div>
+          <div class="result-stat">
+            <div class="stat-value" id="category">-</div>
+            <div class="stat-label">Category</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Sidebar -->
+    <div class="sidebar">
+      <!-- Trending Movies -->
+      <div class="trending-section">
+        <h3 class="sidebar-title">📈 Trending Movies</h3>
+        <div class="trending-movie">
+          <div class="movie-poster">🦸</div>
+          <div class="movie-info">
+            <h4>Superhero Epic</h4>
+            <div class="movie-rating">
+              <span class="rating-star">⭐</span>
+              <span>8.7</span>
+            </div>
+          </div>
+        </div>
+        <div class="trending-movie">
+          <div class="movie-poster">🚀</div>
+          <div class="movie-info">
+            <h4>Space Odyssey</h4>
+            <div class="movie-rating">
+              <span class="rating-star">⭐</span>
+              <span>8.3</span>
+            </div>
+          </div>
+        </div>
+        <div class="trending-movie">
+          <div class="movie-poster">🎭</div>
+          <div class="movie-info">
+            <h4>Drama Masterpiece</h4>
+            <div class="movie-rating">
+              <span class="rating-star">⭐</span>
+              <span>9.1</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Popular Cast -->
+      <div class="cast-section">
+        <h3 class="sidebar-title">🌟 Popular Cast</h3>
+        <div class="cast-grid">
+          <div class="cast-member">
+            <div class="actor-avatar">
+              <img 
+              src="./Kartik_aaryan.webp" 
+              alt="Actor Avatar" 
+              class="actor-avatar-img" 
+              style="width: 65px; height: 65px; object-fit: cover; border-radius: 50%;" 
+            />
+          </div>
+            <div class="actor-name"> Kartik Aaryan</div>
+          </div>
+          <div class="cast-member">
+            <div class="actor-avatar"> 
+              <img src="./Priyanka_chopra.jpeg"   
+                alt="Actor Avatar"                
+                class="actor-avatar-img"                
+                style="width: 70px; height: 70px; object-fit: cover; border-radius: 50%;"       
+                />
+            </div>
+            <div class="actor-name">Priyanka Chopra</div>
+          </div>
+          <div class="cast-member">
+            <div class="actor-avatar">
+              <img 
+              src="./Ananya_pandey.jpg" 
+              alt="Actor Avatar" 
+              class="actor-avatar-img" 
+              style="width: 60px; height: 60px; object-fit: cover; border-radius: 50%;" 
+            />
+            </div>
+            <div class="actor-name">Ananya Pandey</div>
+          </div>
+          <div class="cast-member">
+            <div class="actor-avatar">
+              <img 
+              src="./Shahid_kapoor.jpg" 
+              alt="Actor Avatar" 
+              class="actor-avatar-img" 
+              style="width: 70px; height: 70px; object-fit: cover; border-radius: 50%;" 
+            />
+            </div>
+            <div class="actor-name">Shahid Kapoor</div>
+          </div>
+          <div class="cast-member">
+            <div class="actor-avatar">
+              <img 
+              src="./Ayushmann_khurana.jpg" 
+              alt="Actor Avatar" 
+              class="actor-avatar-img" 
+              style="width: 70px; height: 70px; object-fit: cover; border-radius: 50%;" 
+            />
+            </div>
+            <div class="actor-name">Ayushmann Khurrana</div>
+          </div>
+          <div class="cast-member">
+            <div class="actor-avatar">
+              <img 
+              src="./Kriti_sanon.jpeg" 
+              alt="Actor Avatar" 
+              class="actor-avatar-img" 
+              style="width: 55px; height: 55px; object-fit: cover; border-radius: 50%;" 
+            />
+             </div>
+            <div class="actor-name">Kriti Sanon</div>
+          </div>
+          <div class="cast-member">
+            <div class="actor-avatar">
+              <img 
+              src="./Vicky_kaushal.avif" 
+              alt="Actor Avatar" 
+              class="actor-avatar-img" 
+              style="width: 70px; height: 70px; object-fit: cover; border-radius: 50%;" 
+            />
+              </div>
+            <div class="actor-name">Vicky Kaushal</div>
+          </div>
+          <div class="cast-member">
+            <div class="actor-avatar">
+              <img 
+              src="./Amitabh_Bacchcan.avif" 
+              alt="Actor Avatar" 
+              class="actor-avatar-img" 
+              style="width: 60px; height: 60px; object-fit: cover; border-radius: 50%;" 
+            />
+            </div>
+            <div class="actor-name">Amitabh Bachchan</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Mobile menu toggle functionality
+    const mobileMenuToggle = document.getElementById('mobileMenuToggle');
+    const navLinks = document.getElementById('navLinks');
+    
+    mobileMenuToggle.addEventListener('click', () => {
+      mobileMenuToggle.classList.toggle('active');
+      navLinks.classList.toggle('active');
+    });
+    
+    // Close menu when clicking on a nav link
+    const navItems = document.querySelectorAll('.nav-link');
+    navItems.forEach(item => {
+      item.addEventListener('click', () => {
+        mobileMenuToggle.classList.remove('active');
+        navLinks.classList.remove('active');
+      });
+    });
+  </script>
+</body>
+</html>
